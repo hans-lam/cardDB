@@ -1,0 +1,13 @@
+h2 {
+    margin-top: -0.125%;
+    font-family: Futura,Trebuchet MS,Arial,sans-serif; 
+} 
+
+.search-div {
+    display: flex;
+}  
+
+.search {
+    padding-right: 0.5%;
+    max-width: 25%;
+}
