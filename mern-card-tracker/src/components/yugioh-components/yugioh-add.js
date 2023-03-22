@@ -1,29 +1,39 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import { Button, Modal } from "@mantine/core";
 import YugiohAddForm from "./yugioh-add-form";
 import "../../styling/yugioh-styling/yugioh-list.css";
 
 const YugiohAdd = () => {
-    const [opened, setOpened] = useState(false); 
+    const [opened, setOpened] = useState(false);
 
-    return(
+    return (
         <div className="crud-buttons">
             <Button
                 size="sm"
-                compact 
+                compact
                 variant="outline"
-                onClick={() => setOpened(true)} 
+                onClick={() => setOpened(true)}
             >Add a card</Button>
             <Modal
                 opened={opened}
                 onClose={() => setOpened(false)}
-                title="Add a card"
                 size="lg"
+                withCloseButton={false}
             >
-                <YugiohAddForm />
+                <Modal.Header className="modal-header">
+                    <Modal.Title
+                        className="modal-title"
+                    >
+                        Add a card
+                    </Modal.Title>
+                    <Modal.CloseButton />
+                </Modal.Header>
+                <Modal.Body>
+                    <YugiohAddForm />
+                </Modal.Body>
             </Modal>
         </div>
     );
-}; 
+};
 
 export default YugiohAdd;

@@ -3,6 +3,7 @@ import { Button } from "@mantine/core";
 import YugiohIdForm from "./yugioh-id-form";
 import * as constants from "./yugioh-constants";
 import YugiohCardForm from "./yugioh-card-form";
+import "../../styling/yugioh-styling/yugioh-modals.css";
 
 const YugiohUpdateForm = () => {
     const [cardName, setCardName] = useState("");
@@ -27,9 +28,9 @@ const YugiohUpdateForm = () => {
         setCurrData, setCardOrigin, setNumberOwned, setTCGLink);
 
     const onChangeHandler = () => {
-        const updateURL = "http://localhost:5000/yugioh/update/" + currCardID; 
+        const updateURL = "http://localhost:5000/yugioh/update/" + currCardID;
 
-        let finalLink = tcgPlayerLink; 
+        let finalLink = tcgPlayerLink;
         if (!(tcgPlayerLink.includes(constants.englishLinkSuffix))) {
             finalLink += constants.englishLinkSuffix;
         }
@@ -39,18 +40,18 @@ const YugiohUpdateForm = () => {
             cardType: cardType,
             cardSubType: currData,
             cardOrigin: cardOrigin,
-            numberOwned: numberOwned, 
+            numberOwned: numberOwned,
             tcgPlayerLink: finalLink
         }
 
         fetch(updateURL, {
-            method: 'POST', 
-            mode: 'cors', 
+            method: 'POST',
+            mode: 'cors',
             headers: {
                 "Content-Type": "application/json",
-            }, 
+            },
             body: JSON.stringify(updateJSON)
-        }) 
+        })
             .then((response) => {
                 if (response.ok) {
                     setMessage(cardName + " updated!");
@@ -71,19 +72,19 @@ const YugiohUpdateForm = () => {
                 let cardBody = constants.getCardID(data, hasMultiple, cardName, cardOrigin, setIDMessage, true);
                 if (Object.keys(cardBody).length !== 0) {
                     setCurrID(cardBody[constants.idIdentifier]);
-                    setCardType(cardBody.cardType); 
+                    setCardType(cardBody.cardType);
                     if (cardBody.cardType === "Monster") {
                         setMonsterBool(true);
                         setCurrSubArray(constants.monsterSelectData);
                     } else if (cardBody.cardType === "Spell") {
-                        setCurrSubArray(constants.spellSelectData); 
+                        setCurrSubArray(constants.spellSelectData);
                     } else {
                         setCurrSubArray(constants.trapSelectData);
                     }
-                    setCurrData(cardBody.cardSubType); 
+                    setCurrData(cardBody.cardSubType);
                     setCardName(cardBody.cardName);
-                    setCardOrigin(cardBody.cardOrigin); 
-                    setNumberOwned(cardBody.numberOwned); 
+                    setCardOrigin(cardBody.cardOrigin);
+                    setNumberOwned(cardBody.numberOwned);
                     setTCGLink(cardBody.tcgPlayerLink);
 
                     setIDMessage("Card Found. Please enter the updated info now.");
@@ -104,42 +105,48 @@ const YugiohUpdateForm = () => {
         <div>
             {whichStep === "id" ?
                 <div>
-                    <h4>Get card ID:</h4>
+                    <h3>Get card ID:</h3>
                     <YugiohIdForm
                         setCardName={setCardName}
                         hasMultiple={hasMultiple}
                         onSetMultiple={onSetMultiple}
                         setCardOrigin={setCardOrigin}
                     />
-                    <Button
-                        size="sm"
-                        compact
-                        variant="outline"
-                        onClick={onFindHandler}
-                    >
-                        Find Card
-                    </Button>
-                    <p>{idMessage}</p>
+                    <div className="submit">
+                        <Button
+                            size="sm"
+                            compact
+                            variant="outline"
+                            onClick={onFindHandler}
+                        >
+                            Find Card
+                        </Button>
+                        <p>{idMessage}</p>
+                    </div>
                 </div> :
                 <div>
-                    <Button
-                        size="sm"
-                        compact
-                        variant="outline"
-                        onClick={goBackHandler}
-                    >Change card being updated</Button>
-                    <h4>Update card info:</h4>
+                    <h3>Update card info:</h3>
+                    <div className="change-form">
+                        <Button
+                            size="sm"
+                            compact
+                            variant="outline"
+                            onClick={goBackHandler}
+                        >Change card being updated</Button>
+                    </div>
                     <YugiohCardForm
                         dataObj={dataObj}
                         fObj={functionObj}
                     />
-                    <Button
-                        size="sm"
-                        compact
-                        variant="outline"
-                        onClick={onChangeHandler}
-                    >Update Card</Button>
-                    <p>{message}</p>
+                    <div className="submit">
+                        <Button
+                            size="sm"
+                            compact
+                            variant="outline"
+                            onClick={onChangeHandler}
+                        >Update Card</Button>
+                        <p>{message}</p>
+                    </div>
                 </div>
             }
         </div>

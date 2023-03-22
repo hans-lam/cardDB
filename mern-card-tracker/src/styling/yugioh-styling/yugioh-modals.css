@@ -1,0 +1,42 @@
+h4 {
+    font-size: medium;
+    font-weight: normal;
+    font-family: Futura,Trebuchet MS,Arial,sans-serif;
+    margin-bottom: 2.5%;
+} 
+
+h3 {
+    font-weight: 525;
+    font-family: Futura,Trebuchet MS,Arial,sans-serif;
+    font-size: large;
+    margin-bottom: -2.5%;
+}
+
+p {
+    font-weight: 100;
+    font-family: Futura,Trebuchet MS,Arial,sans-serif;
+}
+
+.type-message {
+    color: #B6B6B6;
+    font-weight: lighter;
+}
+
+.submit {
+    padding-top: 2.5%;
+    margin-bottom: -2.5%;
+} 
+
+i {
+    color: #C8C8C8;
+    font-weight: 500;
+} 
+
+.checkbox {
+    padding-top: 2.5%;
+}
+
+.change-form {
+    padding-top: 5%;
+    margin-bottom: -1.25%;
+}

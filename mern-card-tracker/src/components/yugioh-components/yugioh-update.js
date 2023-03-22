@@ -16,10 +16,20 @@ const YugiohUpdate = () => {
             <Modal
                 opened={opened}
                 onClose={() => setOpened(false)}
-                title="Update a card"
                 size="lg"
+                withCloseButton={false}
             >
-                <YugiohUpdateForm />
+                <Modal.Header className="modal-header">
+                    <Modal.Title
+                        className="modal-title"
+                    >
+                        Update a card
+                    </Modal.Title>
+                    <Modal.CloseButton />
+                </Modal.Header>
+                <Modal.Body>
+                    <YugiohUpdateForm />
+                </Modal.Body>
             </Modal>
         </div>
     );

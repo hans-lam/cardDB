@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@mantine/core";
 import * as constants from "./yugioh-constants";
 import YugiohCardForm from "./yugioh-card-form";
+import "../../styling/yugioh-styling/yugioh-modals.css";
 
 const YugiohAddForm = () => {
     const [cardName, setCardName] = useState("");
@@ -22,14 +23,14 @@ const YugiohAddForm = () => {
 
     const onChangeHandler = () => {
         if (currData.length < 1) {
-            setMessage("Please select a viable sub-type.");
+            setMessage("Please check to make sure you entered all required fields correctly.");
             return;
         }
 
-        let finalLink = tcgPlayerLink; 
+        let finalLink = tcgPlayerLink;
         if (tcgPlayerLink.length > 0) {
             finalLink += constants.englishLinkSuffix;
-        } 
+        }
 
         const cardJSON = {
             cardName: cardName,
@@ -63,13 +64,15 @@ const YugiohAddForm = () => {
                 dataObj={dataObj}
                 fObj={functionObj}
             />
-            <Button
-                size="sm"
-                compact
-                variant="outline"
-                onClick={onChangeHandler}
-            >Add card to database</Button>
-            <p>{message}</p>
+            <div className="submit">
+                <Button
+                    size="sm"
+                    compact
+                    variant="outline"
+                    onClick={onChangeHandler}
+                >Add card to database</Button>
+                <p>{message}</p>
+            </div>
         </div>
     );
 };

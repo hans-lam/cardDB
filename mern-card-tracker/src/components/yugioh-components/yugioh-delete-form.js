@@ -1,7 +1,8 @@
-import React, {useState} from "react"; 
+import React, { useState } from "react";
 import { Button } from "@mantine/core";
 import * as constants from "./yugioh-constants";
 import YugiohIdForm from "./yugioh-id-form";
+import "../../styling/yugioh-styling/yugioh-modals.css";
 
 const YugiohDeleteForm = () => {
     const [cardName, setCardName] = useState("");
@@ -12,7 +13,7 @@ const YugiohDeleteForm = () => {
     const onChangeHandler = () => {
         fetch("http://localhost:5000/yugioh")
             .then((res) => res.json())
-            .then((data) => { 
+            .then((data) => {
                 let cardID = constants.getCardID(data, hasMultiple, cardName, cardOrigin, setMessage, false);
 
                 if (cardID.length > 1) {
@@ -21,39 +22,41 @@ const YugiohDeleteForm = () => {
                         id: cardID
                     }
                     fetch(deleteURL, {
-                        method: 'DELETE', 
-                        mode: 'cors', 
+                        method: 'DELETE',
+                        mode: 'cors',
                         headers: {
                             "Content-Type": "application/json",
-                        }, 
+                        },
                         body: JSON.stringify(deleteJSON)
                     })
                         .then(setMessage("Card deleted successfully."));
-                } 
+                }
             });
-    }; 
+    };
 
     const onSetMultiple = () => {
         setMultiple(!(hasMultiple));
-    } 
+    }
 
     return (
         <div>
-            <YugiohIdForm 
+            <YugiohIdForm
                 setCardName={setCardName}
-                hasMultiple={hasMultiple} 
-                onSetMultiple={onSetMultiple} 
+                hasMultiple={hasMultiple}
+                onSetMultiple={onSetMultiple}
                 setCardOrigin={setCardOrigin}
             />
-            <Button
-                size="sm"
-                compact 
-                variant="outline"
-                onClick={onChangeHandler}
-            >Delete card from database</Button> 
-            <p>{message}</p> 
+            <div className="submit">
+                <Button
+                    size="sm"
+                    compact
+                    variant="outline"
+                    onClick={onChangeHandler}
+                >Delete card from database</Button>
+                <p>{message}</p>
+            </div>
         </div>
     );
-}; 
+};
 
 export default YugiohDeleteForm;

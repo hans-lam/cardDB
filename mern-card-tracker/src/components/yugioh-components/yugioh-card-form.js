@@ -2,6 +2,7 @@ import React from "react";
 import { Select, MultiSelect } from "@mantine/core";
 import { Input } from "antd";
 import * as constants from "./yugioh-constants";
+import "../../styling/yugioh-styling/yugioh-modals.css";
 
 const YugiohCardForm = ({ dataObj, fObj }) => {
 
@@ -46,7 +47,7 @@ const YugiohCardForm = ({ dataObj, fObj }) => {
                             onChange={(subType) => constants.subTypeChangeHandler(subType, dataObj.isMonster, fObj.setCurrData)}
                         />}
                 </div> : <div>
-                    <p>Select a card type first before choosing sub type.</p>
+                    <p className="type-message">Select a card type first before choosing sub type.</p>
                 </div>
             }
             <h4>Enter card origin</h4>
@@ -62,7 +63,7 @@ const YugiohCardForm = ({ dataObj, fObj }) => {
                 defaultValue={dataObj.numberOwned}
                 onChange={(e) => fObj.setNumberOwned(e.target.value)}
             />
-            <h4>Enter TCGPlayer link (optional)</h4>
+            <h4>Enter TCGPlayer link <i>(optional)</i></h4>
             <Input
                 placeholder="Enter TCGPlayer link..."
                 defaultValue={dataObj.tcgPlayerLink}

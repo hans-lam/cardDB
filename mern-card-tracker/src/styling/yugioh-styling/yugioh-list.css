@@ -5,3 +5,13 @@
 .crud-buttons {
     padding-right: 0.5%;
 } 
+
+.modal-title {
+    font-size: x-large;
+    font-family: Futura,Trebuchet MS,Arial,sans-serif;
+    font-weight: lighter;
+} 
+
+.modal-header {
+    margin-bottom: -2.5%;
+}
