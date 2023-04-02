@@ -158,4 +158,13 @@ export const filterTypes = (field, value, record) => {
     }
 
     return filterPass
-} 
+};
+
+export const yugiohFormBase ={
+    cardName: "", 
+    cardType: "", 
+    cardSubType: [], 
+    cardOrigin: "", 
+    numberOwned: 0, 
+    tcgPlayerLink: ""
+};

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "@mantine/core";
 import YugiohImportForm from "./yugioh-import-form";
+import "../../styling/yugioh-styling/yugioh-list.css";
 
 const YugiohImport = () => {
     const [opened, setOpened] = useState(false);

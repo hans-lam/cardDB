@@ -21,10 +21,9 @@ const yugiohSchema = new Schema({
     cardName: {
         type: String,
         required: true,
-        unique: false,
         trim: true,
         minlength: 1
-    },
+    }, 
     cardType: {
         type: String,
         enum: Object.values(cardTypeEnum),
@@ -48,7 +47,6 @@ const yugiohSchema = new Schema({
     cardOrigin: {
         type: String,
         required: true,
-        unique: false,
         trim: true,
         minlength: 1
     },
@@ -63,7 +61,9 @@ const yugiohSchema = new Schema({
     }
 }, {
     timestamps: true,
-});
+}); 
+
+yugiohSchema.index({cardName: 1, cardOrigin: 1}, {unique: true});
 
 const yugioh = mongoose.model('yugioh', yugiohSchema);
 module.exports = yugioh;

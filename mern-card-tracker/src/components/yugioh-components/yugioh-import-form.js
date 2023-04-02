@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Button } from "@mantine/core";
 import Papa from "papaparse";
+import * as constants from "./yugioh-constants";
+import "../../styling/yugioh-styling/yugioh-modals.css";
 
 const YugiohImportForm = () => {
-    const [columns, setColumns] = useState([]); 
+    const [columns, setColumns] = useState([]);
     const [values, setValues] = useState([]);
+    const [message, setMessage] = useState("");
 
     const changeHandler = (event) => {
         Papa.parse(event.target.files[0], {
@@ -15,20 +18,52 @@ const YugiohImportForm = () => {
                 const valuesArray = [];
 
                 // Iterating data to get column name and their values
-                results.data.map((d) => {
+                results.data.forEach((d) => {
                     rowsArray.push(Object.keys(d));
                     valuesArray.push(Object.values(d));
                 });
 
-                setColumns(rowsArray[0]); 
+                setColumns(rowsArray[0]);
                 setValues(valuesArray);
             },
         });
-    }; 
+    };
 
     const sendHandler = () => {
-        
-    }
+        if (columns.length > 0 && values.length > 0) {
+            for (let row in values) {
+                const baseObj = constants.yugiohFormBase;
+                const currRow = values[row];
+
+                for (let col in columns) {
+                    if (columns[col] === "numberOwned") {
+                        baseObj[columns[col]] = Number(currRow[col]);
+                    } else if (columns[col] === "cardSubType") {
+                        const splitTypes = currRow[col].split(", ");
+                        baseObj[columns[col]] = splitTypes;
+                    } else {
+                        baseObj[columns[col]] = currRow[col];
+                    }
+                }
+
+                fetch("http://localhost:5000/yugioh/add", {
+                    method: 'POST',
+                    mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(baseObj)
+                })
+                    .then((response) => {
+                        if (response.ok) {
+                            setMessage("Cards added!");
+                        } else {
+                            setMessage(constants.errorMsg);
+                        }
+                    });
+            }
+        }
+    };
 
     return (
         <div>
@@ -39,6 +74,15 @@ const YugiohImportForm = () => {
                 accept=".csv"
                 onChange={changeHandler}
                 className="csvInput" />
+            <div className="submit">
+                <Button
+                    size="sm"
+                    compact
+                    variant="outline"
+                    onClick={sendHandler}
+                > Send CSV file </Button>
+                <p>{message}</p>
+            </div>
         </div>
     );
 };

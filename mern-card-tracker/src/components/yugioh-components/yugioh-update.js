@@ -1,12 +1,13 @@
 import React, { useState } from "react"; 
 import { Button, Modal } from "@mantine/core";
 import YugiohUpdateForm from "./yugioh-update-form";
+import "../../styling/yugioh-styling/yugioh-list.css";
 
 const YugiohUpdate = () => {
     const [opened, setOpened] = useState(false); 
 
     return(
-        <div>
+        <div className="crud-buttons">
             <Button
                 size="sm"
                 compact 
