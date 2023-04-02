@@ -11,7 +11,7 @@ const CardAppShell = () => {
   return (
     <AppShell
       padding="md"
-      navbar={<CardNavbar />}
+      navbar={<></>}
       header={<Header height={60} p="xs">{<CardHeader />}</Header>}
       styles={(theme) => ({
         main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
