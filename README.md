@@ -10,7 +10,8 @@ To launch this application, please follow the following steps:
 5. In the ".env" file, copy and paste the following:
 ```
 ATLAS_URI="mongodb+srv://basicUser:JAm8DGxuACtTFiYl@cardcluster.li3tom3.mongodb.net/?retryWrites=true&w=majority"
-``` 
+```
+6. Save the changes made to the ".env" file.
 7. Open a new terminal instance and navigate to the backend folder.
 8. Run the command ``` npm install ```. This will install all the backend dependencies.
 9. Once the backend dependencies have been installed, run the command ``` node server.js ```. If the server is successfully running, you should see the following messages in the terminal:
