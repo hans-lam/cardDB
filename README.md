@@ -11,6 +11,7 @@ To launch this application, please follow the following steps:
 ```
 ATLAS_URI="mongodb+srv://basicUser:JAm8DGxuACtTFiYl@cardcluster.li3tom3.mongodb.net/?retryWrites=true&w=majority"
 ```
+NOTE: this will allow you access to the database as a "basicUser", which only has 'read' permissions.
 6. Save the changes made to the ".env" file.
 7. Open a new terminal instance and navigate to the backend folder.
 8. Run the command ``` npm install ```. This will install all the backend dependencies.
