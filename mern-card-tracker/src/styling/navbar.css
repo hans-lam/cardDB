@@ -1,4 +1,4 @@
 .nav {
     font-size: large;
-    display: flex;
+    display: inline-block;
 }

@@ -1,6 +1,5 @@
 import { AppShell, Header } from "@mantine/core";
 import React from "react";
-import CardNavbar from "./cardNavbar";
 import CardHeader from "./CardHeader";
 import { Routes, Route } from "react-router-dom";
 import HomePage from '../../pages/home';
@@ -11,7 +10,6 @@ const CardAppShell = () => {
   return (
     <AppShell
       padding="md"
-      navbar={<></>}
       header={<Header height={60} p="xs">{<CardHeader />}</Header>}
       styles={(theme) => ({
         main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
