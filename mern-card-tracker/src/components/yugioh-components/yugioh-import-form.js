@@ -55,11 +55,8 @@ const YugiohImportForm = () => {
                     body: JSON.stringify(baseObj)
                 })
                     .then((response) => {
-                        if (response.ok) {
-                            setMessage("Cards added!");
-                        } else {
-                            setMessage(constants.errorMsg);
-                        }
+                        const responseMsg = constants.handleResponse("imported", "", response);
+                        setMessage(responseMsg);
                     });
             }
         }

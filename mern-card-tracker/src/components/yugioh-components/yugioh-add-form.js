@@ -50,11 +50,8 @@ const YugiohAddForm = () => {
             body: JSON.stringify(cardJSON)
         })
             .then((response) => {
-                if (response.ok) {
-                    setMessage(cardName + " added!");
-                } else {
-                    setMessage(constants.errorMsg);
-                }
+                const responseMsg = constants.handleResponse("added", cardName, response);
+                setMessage(responseMsg);
             });
     };
 

@@ -53,11 +53,8 @@ const YugiohUpdateForm = () => {
             body: JSON.stringify(updateJSON)
         })
             .then((response) => {
-                if (response.ok) {
-                    setMessage(cardName + " updated!");
-                } else {
-                    setMessage(constants.errorMsg);
-                }
+                const responseMsg = constants.handleResponse("updated", cardName, response);
+                setMessage(responseMsg);
             });
     }
 

@@ -31,13 +31,12 @@ const YugiohCardForm = ({ dataObj, fObj }) => {
                 <div>
                     {dataObj.isMonster ?
                         <MultiSelect
-                            placeholder="Choose two that apply"
+                            placeholder="Choose all that apply"
                             data={constants.monsterSelectData}
                             searchable
                             nothingFound={'None'}
                             defaultValue={dataObj.currData}
                             onChange={(subType) => constants.subTypeChangeHandler(subType, dataObj.isMonster, fObj.setCurrData)}
-                            maxSelectedValues={2}
                         /> :
                         <Select
                             placeholder="Choose one that applies"

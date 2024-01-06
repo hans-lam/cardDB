@@ -13,13 +13,13 @@ const YugiohIdForm = ({setCardName, hasMultiple, onSetMultiple, setCardOrigin}) 
             ></Input> 
             <Checkbox
                 checked={hasMultiple}
-                label="Multiple Versions?"
+                label="Multiple Versions (of this card)?"
                 onChange={onSetMultiple}
                 className="checkbox"
             /> 
             {hasMultiple ? 
             <div>
-                <h4>Enter card name</h4>
+                <h4>Specify card origin</h4>
                 <Input
                     placeholder="Enter card origin..."
                     onChange={(e) => setCardOrigin(e.target.value)}

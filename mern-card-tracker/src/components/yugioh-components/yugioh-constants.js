@@ -32,6 +32,8 @@ export const trapSelectData = [
 
 export const errorMsg = "Something went wrong when trying to send the request. Please check that the data you entered was correct.";
 
+export const permissionsMsg = "It appears you do not have permission to perform this action.";
+
 export const englishLinkSuffix = "?Language=English";
 
 export const idIdentifier = "_id";
@@ -159,6 +161,28 @@ export const filterTypes = (field, value, record) => {
 
     return filterPass
 };
+
+export const handleResponse = (crud, cardName, response) => {
+    let responseMsg = ""; 
+
+    if (!response.ok) {
+        const errStr = " (" + response.status + ")";
+        if (response.status === 400) {
+            responseMsg = "Error: " + permissionsMsg + errStr;
+        } else {
+            responseMsg = errorMsg + errStr;
+        }
+    } else {
+        let cardNameFormatted = cardName; 
+        if (cardNameFormatted.length < 1) {
+            cardNameFormatted = "Cards"; 
+        } 
+        cardNameFormatted += " ";
+        responseMsg = cardNameFormatted + crud + " successfully!";
+    } 
+
+    return responseMsg;
+}
 
 export const yugiohFormBase ={
     cardName: "", 

@@ -29,7 +29,10 @@ const YugiohDeleteForm = () => {
                         },
                         body: JSON.stringify(deleteJSON)
                     })
-                        .then(setMessage("Card deleted successfully."));
+                        .then((response) => {
+                            const responseMsg = constants.handleResponse("deleted", cardName, response);
+                            setMessage(responseMsg);
+                        });
                 }
             });
     };
