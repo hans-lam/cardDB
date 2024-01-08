@@ -32,7 +32,7 @@ export const trapSelectData = [
 
 export const errorMsg = "Something went wrong when trying to send the request. Please check that the data you entered was correct.";
 
-export const permissionsMsg = "It appears you do not have permission to perform this action.";
+export const permissionsMsg = "It appears the request you made was invalid, likely due to a syntax or permissions issue.";
 
 export const englishLinkSuffix = "?Language=English";
 

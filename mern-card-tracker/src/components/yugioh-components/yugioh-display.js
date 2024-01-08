@@ -128,7 +128,7 @@ const YugiohDisplay = () => {
         // eslint-disable-next-line 
     }
 
-    const handleTableChange = (pagination, filters, sorter) => {
+    const handleTableChange = (filters) => {
         setCardType(filters.cardType);
         setCardSubType(filters.cardSubType);
     }

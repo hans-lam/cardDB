@@ -5,6 +5,7 @@ import YugiohDelete from "../components/yugioh-components/yugioh-delete";
 import YugiohUpdate from "../components/yugioh-components/yugioh-update";
 import "../styling/yugioh-styling/yugioh-list.css";
 import YugiohImport from "../components/yugioh-components/yugioh-import";
+import YugiohExport from "../components/yugioh-components/yugioh-export";
 
 const YugiohList = () => {
 
@@ -16,6 +17,7 @@ const YugiohList = () => {
                 <YugiohDelete />
                 <YugiohUpdate /> 
                 <YugiohImport />
+                <YugiohExport />
             </div>
         </div>
     );
